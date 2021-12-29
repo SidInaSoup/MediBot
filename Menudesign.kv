@@ -1,0 +1,522 @@
+<ScreenManager>
+    id: scrn_mngr
+    Screen1:
+    Screen2:
+    Screen3:
+    Screen4:
+    Screen5:
+    Screen6:
+    Screen7:
+
+<Screen1>
+    id:scrn_1
+
+    BackgroundLayout1:
+
+
+    MDIconButton:
+        id: start
+        icon: "Assets\PlayButton.png"
+        pos_hint: {"center_x": .5, "center_y": .3}
+        user_font_size: "48sp"
+        on_release:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'S2'
+
+
+    MDRaisedButton:
+        id:about
+        text: "About"
+        pos_hint: {"center_x": .7, "center_y": .3}
+        md_bg_color: 1, 0, 1, 1
+        on_release:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'S3'
+
+    MDRaisedButton:
+        id:admin
+        text: "Admin"
+        pos_hint: {"center_x": .3, "center_y": .3}
+        md_bg_color: 1, 0, 1, 1
+        on_release:
+            root.manager.transition.direction = 'right'
+            root.manager.current = 'S4'
+
+
+
+    MDCard:
+        id:card
+        color: (0,1,1,1)
+        orientation:"horizontal"
+        size_hint: [0.7,0.42]
+        pos_hint: {'center_x':0.5,'center_y':0.75}
+
+        GridLayout:
+            cols:1
+            rows:2
+            size: root.width, root.height
+            MDLabel:
+                text:"MEDIBOT"
+                color:(199/255, 34/255, 34/255,1)
+                text_size: [0.6,0.3]
+                font_size:120
+                bold:True
+                halign: "center"
+                valign: "middle"
+
+            MDLabel:
+                text:"Select an option to begin"
+
+                text_size: [0.4,0.3]
+                font_size:32
+                bold:True
+                halign: "center"
+
+
+
+<Screen2>
+    id:Screen2
+    name:'Screen2'
+    BackgroundLayout2:
+
+    BoxLayout:
+        id: rightbox
+        orientation:"horizontal"
+        background_normal:''
+        background_color:(0,0,1,1)
+        pos_hint:{'x':0.458,'y':0.2}
+        MDLabel:
+            color:(0,0,0,1)
+            id:number
+            bold:True
+            italic:True
+            text:"\n\nEnter your symptoms in the left.\n MATCH ANY TWO \n Choose from these: \nSymptom1 :1)indigestion;2) Rash;3) Itchy eye; 4)Fever ;5)cough that \n lasts longer than 3 weeks; 6)sore throat,7)sudden fever; 8)diarrhoea;\n 9)sore, red eyes \nSymptom2: 1)nausea and diarrhea; 2)Spots;3) Tearing,Mucus from\n eye;4) Chest pain and shortness of breath; 5)Fever; 6)cough lasts for\n long time; 7)abdominal pain, aching muscles; 8)Stomach cramps;\n 9)fever \nSymptom3: 1)abdominal swelling ;  2)Blisters; 3)Redness in eye ;\n4)Nausea and vomiting;5) Night sweats;6) aches and pains ;\n 7) headache ,  sorethroat;8) vomiting;9) greyish-white spots\n on the inside of cheeks"
+            font_size:23
+            size:root.size
+
+    MDIconButton:
+        id: start
+        icon: "Assets\BackButton.png"
+        pos_hint: {"center_x": .95, "center_y": .15}
+        user_font_size: "32sp"
+        on_press:
+            root.manager.transition.direction = 'right'
+            root.manager.current = 'S1'
+
+
+
+    MDCard:
+        id:card1
+        color:(1,0,1,1)
+        orientation:"horizontal"
+        size_hint: [0.4,0.9]
+        pos_hint:{'center_x':0.25,'center_y':0.5}
+
+
+        GridLayout:
+            cols:1
+            row_force_default: True
+            row_default_height: '32dp'
+            size_hint_y: None
+            height: self.minimum_height
+            spacing:50
+            padding:10
+            MDLabel:
+
+                text:"SYMPTOM-1"
+                font_size:28
+                halign: "center"
+                valign: "middle"
+
+            MDTextFieldRect:
+                id:symp1
+                size_hint: 1,0.7
+                multiline:False
+                height: "30dp"
+
+
+
+            MDLabel:
+
+                text:"SYMPTOM-2"
+                font_size:28
+                halign: "center"
+                valign: "middle"
+
+
+            MDTextFieldRect:
+                id:symp2
+                size_hint: 1,0.7
+                multiline:False
+                height: "30dp"
+
+            MDLabel:
+
+                text:"SYMPTOM-3"
+                font_size:28
+                halign: "center"
+                valign: "middle"
+
+            MDTextFieldRect:
+                id:symp3
+                size_hint: 1,0.7
+                multiline:False
+                height: "30dp"
+
+            GridLayout:
+                cols:2
+                rows:1
+                spacing:90
+                MDRaisedButton:
+
+                    id:Go
+                    text: "Go!"
+                    pos_hint: {"center_x": .3, "center_y": .3}
+                    on_release: root.press()
+                    md_bg_color: 1, 0, 1, 1
+                MDRaisedButton:
+
+                    id:Reset
+                    text: "reset"
+                    on_release: root.reset()
+
+
+
+<Screen3>
+
+    id:Screen3
+    #name:'S3'
+
+
+    BoxLayout:
+
+        orientation:"horizontal"
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgb:(0,1,1,1)
+            RoundedRectangle:
+                pos: self.pos
+                size:root.width,root.height
+
+                radius:[0,0,90,90]
+
+
+    MDIconButton:
+        icon: "Assets\BackButton.png"
+        pos_hint: {"center_x": .95, "center_y": .15}
+        user_font_size: "32sp"
+        on_press:
+            root.manager.transition.direction = 'right'
+            root.manager.current = 'S1'
+
+    MDLabel:
+        color:(0,0,0,1)
+        id:number
+        text:"MediBot is a python program that helps you to diagnose yourself. This program asks to enter the symptoms you are experiencing and then returns the name of the disease you have.It helps you  identify your disease and suggests a doctor."
+        bold:True
+        italic:True
+        font_size:23
+        halign:'center'
+        valign:'middle'
+        size:root.size
+
+
+
+<Screen4>
+    id:Screen4
+    BoxLayout:
+
+        orientation:"horizontal"
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgb:(0,1,1,1)
+            RoundedRectangle:
+                pos: self.pos
+                size:root.width,root.height
+
+                radius:[0,0,90,90]
+
+    MDIconButton:
+        icon: "Assets\BackButton.png"
+        pos_hint: {"center_x": .95, "center_y": .15}
+        user_font_size: "32sp"
+        on_press:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'S1'
+
+    MDIconButton:
+        icon: "Assets\VerifyButton.png"
+        pos_hint: {"center_x": .5, "center_y": .4}
+        user_font_size: "32sp"
+        on_press:
+            root.authentication()
+
+    MDLabel:
+        color:(0,0,0,1)
+        pos_hint:{'y':0.2}
+        text:"ENTER YOUR ADMIN ID"
+        bold:True
+        italic:True
+        font_size:18
+        halign:'center'
+        valign:'middle'
+        size:root.size
+
+    MDTextFieldRect:
+        id:adminid
+        pos_hint: {'x':0.35,'y':0.5}
+        size_hint: 0.3,0.05
+        multiline:False
+        height: "30dp"
+
+<Screen5>
+    id:Screen5
+
+    BoxLayout:
+
+        orientation:"horizontal"
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgb:(0,1,1,1)
+            RoundedRectangle:
+                pos: self.pos
+                size:root.width,root.height
+
+                radius:[0,0,90,90]
+
+
+    MDIconButton:
+
+        icon: "Assets\BackButton.png"
+        pos_hint: {"center_x": .95, "center_y": .15}
+        user_font_size: "32sp"
+        on_press:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'S1'
+
+    MDRaisedButton:
+        id:sql_editor
+        text: "EDIT TABLES"
+        size_hint: 0.3,0.1
+        pos_hint: {"center_x": .5, "center_y": .45}
+        md_bg_color: 0, 0, 0, 1
+        on_release:
+            root.manager.transition.direction = 'right'
+            root.manager.current = 'S6'
+
+    MDRaisedButton:
+        id:passwd_change
+        text: "CHANGE PASSCODE"
+        size_hint: 0.3,0.1
+        pos_hint: {"center_x": .5, "center_y": .65}
+        md_bg_color: 0, 0, 0, 1
+        on_release:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'S7'
+
+
+
+<Screen6>
+    id:Screen6
+
+    BoxLayout:
+
+        orientation:"horizontal"
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgb:(80/255, 222/255, 130/255,1)
+            RoundedRectangle:
+                pos: self.pos
+                size:root.width,root.height
+
+                radius:[0,0,90,90]
+
+    MDRaisedButton:
+        id:change
+        text: "delete"
+        size_hint: 0.2,0.05
+        pos_hint: {"center_x": .65, "center_y": .9}
+        md_bg_color: 212/255, 13/255, 13/255, 1
+        on_release:
+            root.delete()
+
+    MDRaisedButton:
+        id:change
+        text: "Confirm Entry"
+        size_hint: 0.2,0.05
+        pos_hint: {"center_x": .2, "center_y": .9}
+        md_bg_color: 212/255, 13/255, 13/255, 1
+        on_release:
+            root.confirm_edit()
+
+
+
+
+    MDTextField:
+        id:query_editor
+        pos_hint:{"center_x": .4, "center_y": .7}
+        size_hint: 0.6,0.1
+        multiline:True
+        hint_text: "Insert Values as a tuple"
+        bold:True
+        color_mode: 'custom'
+        helper_text_mode: "on_focus"
+        helper_text: "Make sure you match the number of values in the table"
+        line_color_focus: 1, 0, 1, 1
+
+
+
+    MDTextField:
+        id:query_editor1
+        pos_hint:{"center_x": .4, "center_y": .5}
+        size_hint: 0.6,0.1
+        multiline:True
+        hint_text: "Enter Row to be Deleted"
+        bold:True
+        color_mode: 'custom'
+        helper_text_mode: "on_focus"
+        helper_text: "Type the row number to delete"
+        line_color_focus: 1, 0, 1, 1
+
+
+
+    MDRaisedButton:
+        id:view
+        text: "View Doctor Details"
+        size_hint: 0.2,0.05
+        pos_hint: {"center_x": .42, "center_y": .9}
+        md_bg_color: 212/255, 13/255, 13/255, 1
+        on_press:
+            root.view_table()
+
+
+
+    MDIconButton:
+
+        icon: "Assets\BackButton.png"
+        pos_hint: {"center_x": .95, "center_y": .15}
+        user_font_size: "32sp"
+        on_press:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'S5'
+
+    MDIconButton:
+
+        icon: "Assets\HomeButton.png"
+        pos_hint: {"center_x": .05, "center_y": .15}
+        user_font_size: "32sp"
+        on_press:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'S1'
+
+
+<Screen7>
+    id:Screen7
+
+
+    BoxLayout:
+
+        orientation:"horizontal"
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgb:(80/255, 222/255, 130/255,1)
+            RoundedRectangle:
+                pos: self.pos
+                size:root.width,root.height
+
+                radius:[0,0,90,90]
+
+
+
+
+    MDIconButton:
+
+        icon: "Assets\BackButton.png"
+        pos_hint: {"center_x": .95, "center_y": .15}
+        user_font_size: "32sp"
+        on_press:
+            root.manager.transition.direction = 'right'
+            root.manager.current = 'S5'
+
+    MDIconButton:
+
+        icon: "Assets\HomeButton.png"
+        pos_hint: {"center_x": .05, "center_y": .15}
+        user_font_size: "32sp"
+        on_press:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'S1'
+
+    MDLabel:
+        color:(0,0,0,1)
+        pos_hint:{'y':0.2}
+        text:"ENTER NEW PASSCODE"
+        bold:True
+        italic:True
+        font_size:18
+        halign:'center'
+        valign:'middle'
+        size:root.size
+
+    MDTextFieldRect:
+        id:new_passwd
+        pos_hint: {'x':0.35,'y':0.5}
+        size_hint: 0.3,0.05
+        multiline:False
+        height: "30dp"
+
+    MDRaisedButton:
+        id:change_passwd
+        text: "Change Passcode"
+        font_color: (119/255, 0/255, 166/255, 1)
+        size_hint: 0.4,0.1
+        pos_hint: {"center_x": .5, "center_y": .36}
+        md_bg_color: 0, 0, 0, 1
+        on_press:
+            root.password_change()
+
+
+
+<BackgroundLayout1@BoxLayout>
+
+    orientation: "vertical"
+    BoxLayout:
+        size_hint_y:0.1
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgb:(0,1,1,1)
+            RoundedRectangle:
+                pos: self.pos
+                size:root.width,root.height
+
+                radius:[0,0,90,90]
+
+
+
+
+<BackgroundLayout2@BoxLayout>
+
+    orientation: "vertical"
+    BoxLayout:
+        size_hint_y:0.1
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgb:(1,0,1,1)
+            RoundedRectangle:
+                pos: self.pos
+                size:root.width,root.height
+
+                radius:[0,0,90,90]
+
+
+
+
+
+
